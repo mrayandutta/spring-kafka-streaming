@@ -3,8 +3,8 @@ package kafkastreaming.producer;
 import java.util.HashMap;
 import java.util.Map;
 
-import kafkastreaming.model.Employee;
-import kafkastreaming.model.EmployeeSerializer;
+import kafkastreaming.model.employee.Employee;
+import kafkastreaming.model.employee.EmployeeSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

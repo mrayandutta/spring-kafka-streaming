@@ -10,7 +10,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-import kafkastreaming.model.Employee;
+import kafkastreaming.model.employee.Employee;
 /**
  * 
  * 1.To enable the Kafka producer kafkaTemplate() and producerFactory() methods should be implemented in KafkaConfig class. 

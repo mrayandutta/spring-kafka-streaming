@@ -2,7 +2,7 @@ package kafkastreaming.consumer;
 
 import java.text.SimpleDateFormat;
 
-import kafkastreaming.model.Employee;
+import kafkastreaming.model.employee.Employee;
 import kafkastreaming.producer.KafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

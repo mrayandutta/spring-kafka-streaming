@@ -1,4 +1,4 @@
-package kafkastreaming.model;
+package kafkastreaming.model.employee;
 
 import java.util.Map;
 

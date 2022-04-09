@@ -1,7 +1,7 @@
 package kafkastreaming.consumer;
 
-import kafkastreaming.model.Employee;
-import kafkastreaming.model.EmployeeDeserializer;
+import kafkastreaming.model.employee.Employee;
+import kafkastreaming.model.employee.EmployeeDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;

@@ -24,3 +24,15 @@ Data
 {"id":"4","name":"peter","department":"supp","salary":100,createdtime:"10:02:2019"}
 {"id":"5","name":"garry","department":"supp","salary":100,createdtime:"10:02:2019"}
 {"id":"6","name":"steve","department":"supp","salary":100,createdtime:"10:02:2019"}
+
+Late Event Handling
+https://aseigneurin.github.io/2018/08/27/kafka-streams-processing-late-events.html
+https://developer.confluent.io/learn-kafka/spring/process-messages-with-kafka-streams/
+https://www.datio.com/architecture/building-real-time-data-pipelines-with-kafka-streams-ii/
+https://developers.redhat.com/blog/2019/06/18/building-apache-kafka-streams-applications-using-red-hat-amq-streams-part-2
+https://jaceklaskowski.gitbooks.io/mastering-kafka-streams/content/kafka-streams-TimeWindowedKStream.html
+
+docker-compose
+http://www.vinsguru.com/kafka-local-infrastructure-setup-using-docker-compose/
+Scaling example
+https://www.vinsguru.com/kafka-scaling-consumers-out-for-a-consumer-group/
