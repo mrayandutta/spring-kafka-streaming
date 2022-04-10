@@ -1,8 +1,10 @@
 package kafkastreaming.producer;
 
+import kafkastreaming.model.event.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -22,73 +24,31 @@ import kafkastreaming.model.employee.Employee;
 public class KafkaProducer {
 	
 	Logger logger = LoggerFactory.getLogger(KafkaProducer.class.getName());
-	
+
 	@Autowired
-	//private final KafkaTemplate<String, String> kafkaTemplate;
-	private final KafkaTemplate<String, Employee> kafkaTemplate;
-	
+	private KafkaTemplate<String, Employee> employeeKafkaTemplate;
+
+	@Autowired
+	private KafkaTemplate<String, Event> eventKafkaTemplate;
+
 	@Value(value = "${target.topic}")
-    private String topicName;
-	
-	@Value(value = "${retry.topic}")
-    private String retryTopicName;
-	
-	//KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
-	KafkaProducer(KafkaTemplate<String, Employee> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
-	
-	public void send(Employee employee) {
-	    kafkaTemplate.send(topicName, employee);
-	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",employee,topicName);
-	    
-	}
-	
-	public void sendFailedMessage(Employee employee) {
-	    kafkaTemplate.send(retryTopicName, employee);
-	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",employee,topicName);
+    private String employeeTopicName;
+
+	@Value(value = "${event.topic}")
+	private String eventTopicName;
+
+	public void sendMessageToEmployeeTopic(Employee employee) {
+		employeeKafkaTemplate.send(employeeTopicName, employee);
+	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",employee,employeeTopicName);
 	    
 	}
 
-	/*
-	
-	public void sendMessage(String msg) {
-	    kafkaTemplate.send(topicName, msg);
-	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",msg,topicName);
-	    
-	}
-	
-	
-	public void sendMessageWithCallback(String message) {
-        
-	    ListenableFuture<SendResult<String, String>> future = 
-	      kafkaTemplate.send(topicName, message);
-		
-	    future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
+	public void sendMessageToEventTopic(Event event) {
+		eventKafkaTemplate.send(eventTopicName, event);
+		logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",event,eventTopicName);
 
-	        @Override
-	        public void onSuccess(SendResult<String, String> result) {
-	        	logger.info("Sent message=[{}] with offset=[{}] to partition {} ",message,result.getRecordMetadata().offset(),result.getRecordMetadata().partition());
-	        }
-	        @Override
-	        public void onFailure(Throwable ex) {
-	        	logger.info("Unable to send message=[{} ] due to : {}",message,ex.getMessage());
-	        }
-	    });
 	}
-	*/
-	/**
-	 * Payload : the message to be pushed to Kafka broker
-	 * Topic : the topic name where sent message will be stored in Kafka broker
-	 * Partition_ID : if given topic have multiple partition sender has to mention the partition id of the topic.
-	 */
-	public void sendCustomizedMessage(String message) {
-	    Message<String> customMessage = MessageBuilder
-	            .withPayload(message)
-	            .setHeader(KafkaHeaders.TOPIC, topicName)
-	            .setHeader(KafkaHeaders.PARTITION_ID, 1)
-	            .build();
-	    this.kafkaTemplate.send(customMessage);
-	}
+	
+
 
 }

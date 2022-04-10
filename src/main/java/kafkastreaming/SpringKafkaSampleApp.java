@@ -1,6 +1,7 @@
 package kafkastreaming;
 
 import kafkastreaming.config.AppConfigs;
+import kafkastreaming.model.event.Event;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -26,6 +27,7 @@ public class SpringKafkaSampleApp implements CommandLineRunner
 	@Autowired
 	KafkaProducer kafkaProducer;
 
+
 		    public static void main(String[] args) {
 		    	logger.info("STARTING THE APPLICATION");
 		    	SpringApplication.run(SpringKafkaSampleApp.class, args);
@@ -36,7 +38,8 @@ public class SpringKafkaSampleApp implements CommandLineRunner
 			@Override
 			public void run(String... args) throws Exception {
 				//pushDummyDataToEmployeeTopic();
-				printTopicMessagesFromStreams();
+				//printTopicMessagesFromStreams();
+				pushMultipleEventsToTopic();
 
 			}
 
@@ -65,18 +68,25 @@ public class SpringKafkaSampleApp implements CommandLineRunner
 		}));
 	}
 
-	/**
-	 *
-	 */
 	public void pushDummyDataToEmployeeTopic() {
 		Employee employee1 = new Employee("Emp1", "Dept1", "100",0,0,0);
 		Employee employee2 = new Employee("Emp2", "Dept2", "200",0,0,0);
 		Employee employee3 = new Employee("Emp3", "Dept3", "300",0,0,0);
-		kafkaProducer.send(employee1);
-		kafkaProducer.send(employee2);
-		kafkaProducer.send(employee3);
+		kafkaProducer.sendMessageToEmployeeTopic(employee1);
+		kafkaProducer.sendMessageToEmployeeTopic(employee2);
+		kafkaProducer.sendMessageToEmployeeTopic(employee3);
 		//kafkaProducer.sendMessage("test");
 		//kafkaProducer.sendMessageWithCallback("message for callback ");
 		//kafkaProducer.sendCustomizedMessage("Custom message");
+	}
+
+	public void pushMultipleEventsToTopic() {
+		Event event1 = new Event(1,1);
+		Event event2 = new Event(2,1);
+		Event event3 = new Event(2,1);
+		kafkaProducer.sendMessageToEventTopic(event1);
+		kafkaProducer.sendMessageToEventTopic(event2);
+		kafkaProducer.sendMessageToEventTopic(event2);
+
 	}
 }

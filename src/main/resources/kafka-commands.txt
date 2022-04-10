@@ -36,3 +36,8 @@ docker-compose
 http://www.vinsguru.com/kafka-local-infrastructure-setup-using-docker-compose/
 Scaling example
 https://www.vinsguru.com/kafka-scaling-consumers-out-for-a-consumer-group/
+
+https://stackoverflow.com/questions/57905042/can-we-use-multiple-kafka-template-in-spring-boot
+
+Serializer
+https://www.baeldung.com/kafka-custom-serializer
