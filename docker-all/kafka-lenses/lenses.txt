@@ -4,3 +4,18 @@ URL:http://localhost:3030
 Credential: admin/admin
 Blog Link
 https://querysurge.zendesk.com/hc/en-us/articles/360022530992-QuerySurge-and-Apache-Kafka-Landoop-Lenses-version-2-x-and-below-
+https://developer.confluent.io/tutorials/sliding-windows/kstreams.html
+https://developer.confluent.io/learn-kafka/kafka-streams/windowing/
+https://medium.com/event-driven-utopia/understanding-materialized-views-part-2-ae957d40a403
+
+testing ?
+https://www.tabnine.com/code/java/methods/org.apache.kafka.streams.kstream.TimeWindowedKStream/aggregate
+https://github.com/a0x8o/kafka/blob/master/streams/src/test/java/org/apache/kafka/streams/kstream/internals/KStreamWindowAggregateTest.java
+
+
+https://stackoverflow.com/questions/54929497/kafka-streams-app-count-and-sum-aggregate
+https://stackoverflow.com/questions/54110206/kafkastreams-getting-window-final-results
+
+https://github.com/tchiotludo/akhq
+https://github.com/adrien-ben/kstream-sales-aggregation-example/blob/master/docker-compose.yml
+
