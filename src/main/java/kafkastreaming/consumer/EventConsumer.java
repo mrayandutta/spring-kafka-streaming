@@ -114,6 +114,7 @@ public class EventConsumer {
                 //.groupByKey()
                 .groupBy((k,v) -> k, Grouped.with(Serdes.Integer(),CustomSerdes.Event()))
                 .windowedBy(TimeWindows.of(Duration.ofSeconds(10)))
+                //.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(Duration.ofSeconds(1), Duration.ofSeconds(1)))
                 .aggregate(
                         ////Initializer
                         new Initializer<EventAggregate>() {
