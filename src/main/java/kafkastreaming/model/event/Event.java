@@ -1,8 +1,11 @@
 package kafkastreaming.model.event;
 
+import java.util.Date;
+
 public class Event {
     private Integer id;
     private Integer value ;
+    private Date evenTime;
 
     private Event() {
     }
@@ -26,6 +29,14 @@ public class Event {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public Date getEvenTime() {
+        return evenTime;
+    }
+
+    public void setEvenTime(Date evenTime) {
+        this.evenTime = evenTime;
     }
 
     @Override
