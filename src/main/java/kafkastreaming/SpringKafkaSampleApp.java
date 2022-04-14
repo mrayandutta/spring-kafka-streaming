@@ -32,7 +32,8 @@ public class SpringKafkaSampleApp implements CommandLineRunner
 	@Override
 	public void run(String... args) throws Exception {
 		pushMultipleEventsToTopic();
-		eventConsumer.processEventStreams();
+		//eventConsumer.processEventStreams();
+		eventConsumer.processEventStreamsWithWindowing();
 	}
 
 	public void pushMultipleEventsToTopic() {
